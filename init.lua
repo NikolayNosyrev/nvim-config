@@ -586,7 +586,6 @@ return require('packer').startup(function(use)
 
   use 'easymotion/vim-easymotion'
 
-
   use 'kyazdani42/nvim-web-devicons'
 
   use 'nelsyeung/twig.vim'
