@@ -266,11 +266,11 @@ require('lspconfig')['intelephense'].setup{
 -- local fg_current = '#262626'
 -- local bg_current = '#8a8a8a'
 
-local fg_visible = '#afafaf'
-local bg_visible = '#3a3a3a'
-
 local fg_inactive = '#9f9f9f'
 local bg_inactive = '#3a3a3a'
+
+local fg_visible = fg_inactive
+local bg_visible = bg_inactive
 
 local fg_current = bg_visible
 local bg_current = fg_visible
