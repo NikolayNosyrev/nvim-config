@@ -57,13 +57,31 @@ require'bufferline'.setup {
   auto_hide = true,
 
   icons = 'both',
+
+  closable = false,
+
+  icon_separator_active = '',
+  icon_separator_inactive = '',
 }
+
 map('n', '<A-h>', ':BufferPrevious<CR>', default_opts)
 map('n', '<A-l>', ':BufferNext<CR>', default_opts)
 map('n', '<A-d>', ':BufferClose<cr>', default_opts)
 map('i', '<A-h>', '<Esc>:BufferPrevious<CR>', default_opts)
 map('i', '<A-l>', '<Esc>:BufferNext<CR>', default_opts)
 map('i', '<A-d>', '<Esc>:BufferClose<cr>', default_opts)
+
+map('n', '<leader>1', '<Cmd>BufferGoto 1<CR>', default_opts)
+map('n', '<leader>2', '<Cmd>BufferGoto 2<CR>', default_opts)
+map('n', '<leader>3', '<Cmd>BufferGoto 3<CR>', default_opts)
+map('n', '<leader>4', '<Cmd>BufferGoto 4<CR>', default_opts)
+map('n', '<leader>5', '<Cmd>BufferGoto 5<CR>', default_opts)
+map('n', '<leader>6', '<Cmd>BufferGoto 6<CR>', default_opts)
+map('n', '<leader>7', '<Cmd>BufferGoto 7<CR>', default_opts)
+map('n', '<leader>8', '<Cmd>BufferGoto 8<CR>', default_opts)
+map('n', '<leader>9', '<Cmd>BufferGoto 9<CR>', default_opts)
+map('n', '<leader>0', '<Cmd>BufferGoto 10<CR>', default_opts)
+
 
 -- telescope
 map('n', ';', ':Telescope find_files<CR>', default_opts)
@@ -241,8 +259,36 @@ require('lspconfig')['intelephense'].setup{
     flags = lsp_flags,
 }
 
--------------------------
+---------------------------------------
 
+local fg_current = '#262626'
+local bg_current = '#8a8a8a'
+
+local fg_visible = '#9f9f9f'
+local bg_visible = '#3a3a3a'
+
+local fg_inactive = '#9f9f9f'
+local bg_inactive = '#3a3a3a'
+
+vim.cmd('hi BufferCurrent guifg='..fg_current..' guibg='..bg_current)
+vim.cmd('hi BufferCurrentIndex guifg='..fg_current..' guibg='..bg_current)
+vim.cmd('hi BufferCurrentMod guifg='..fg_current..' guibg='..bg_current)
+vim.cmd('hi BufferCurrentTarget guifg='..fg_current..' guibg='..bg_current)
+vim.cmd('hi BufferCurrentSign guifg='..fg_current..' guibg='..bg_current)
+
+vim.cmd('hi BufferVisible guifg='..fg_visible..' guibg='..bg_visible)
+vim.cmd('hi BufferVisibleIndex guifg='..fg_visible..' guibg='..bg_visible)
+vim.cmd('hi BufferVisibleMod guifg='..fg_visible..' guibg='..bg_visible)
+vim.cmd('hi BufferVisibleTarget guifg='..fg_visible..' guibg='..bg_visible)
+vim.cmd('hi BufferVisibleSign guifg='..fg_visible..' guibg='..bg_visible)
+
+vim.cmd('hi BufferInactive guifg='..fg_inactive..' guibg='..bg_inactive)
+vim.cmd('hi BufferInactiveIndex guifg='..fg_inactive..' guibg='..bg_inactive)
+vim.cmd('hi BufferInactiveMod guifg='..fg_inactive..' guibg='..bg_inactive)
+vim.cmd('hi BufferInactiveTarget guifg='..fg_inactive..' guibg='..bg_inactive)
+vim.cmd('hi BufferInactiveSign guifg='..fg_inactive..' guibg='..bg_inactive)
+
+vim.cmd('hi BufferTabpageFill guibg='..bg_inactive)
 
 ------------------------------------------------------------------------------ cmp-nvim-lsp -------------
 
