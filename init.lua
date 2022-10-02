@@ -73,6 +73,9 @@ map('i', '<A-h>', '<Esc>:BufferPrevious<CR>', default_opts)
 map('i', '<A-l>', '<Esc>:BufferNext<CR>', default_opts)
 map('i', '<A-d>', '<Esc>:BufferClose<cr>', default_opts)
 
+map('n', '<A-Left>', ':BufferMovePrevious<cr>', default_opts)
+map('n', '<A-Right>', ':BufferMoveNext<cr>', default_opts)
+
 map('n', '<leader>1', '<Cmd>BufferGoto 1<CR>', default_opts)
 map('n', '<leader>2', '<Cmd>BufferGoto 2<CR>', default_opts)
 map('n', '<leader>3', '<Cmd>BufferGoto 3<CR>', default_opts)
