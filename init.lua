@@ -375,7 +375,16 @@ vim.cmd('hi BufferTabpageFill guibg='..bg_inactive)
 
 ------------------------------------------------------------------------------ lualine -------------
 
-require('lualine').setup()
+require('lualine').setup {
+  sections = {
+    lualine_c = {
+      {
+        'filename',
+        path=1
+      }
+    },
+  }
+}
 
 ------------------------------------------------------------------------------ lualine -------------
 
