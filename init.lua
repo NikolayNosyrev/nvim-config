@@ -19,7 +19,7 @@ require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
     -- adaptive_size = true,
-    width = 50,
+    width = 55,
     mappings = {
       list = {
         { key = "<C-k>", action = "" },
@@ -63,7 +63,8 @@ require'bufferline'.setup {
   icon_separator_active = '',
   icon_separator_inactive = '',
 
-  maximum_padding = 2
+  maximum_padding = 2,
+  minimum_padding = 2
 }
 
 map('n', '<A-h>', ':BufferPrevious<CR>', default_opts)
@@ -86,6 +87,7 @@ map('n', '<leader>7', '<Cmd>BufferGoto 7<CR>', default_opts)
 map('n', '<leader>8', '<Cmd>BufferGoto 8<CR>', default_opts)
 map('n', '<leader>9', '<Cmd>BufferGoto 9<CR>', default_opts)
 map('n', '<leader>0', '<Cmd>BufferGoto 10<CR>', default_opts)
+map('n', 'f', '<Cmd>BufferPick<CR>', default_opts)
 
 
 -- telescope
