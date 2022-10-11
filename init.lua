@@ -271,6 +271,8 @@ require('lspconfig')['intelephense'].setup{
 -- local fg_current = '#262626'
 -- local bg_current = '#8a8a8a'
 
+local fg_target = 'yellow'
+
 local fg_inactive = '#acacac'
 local bg_inactive = '#3a3a3a'
 
@@ -283,19 +285,19 @@ local bg_current = fg_visible
 vim.cmd('hi BufferCurrent guifg='..fg_current..' guibg='..bg_current)
 vim.cmd('hi BufferCurrentIndex guifg='..fg_current..' guibg='..bg_current)
 vim.cmd('hi BufferCurrentMod guifg='..fg_current..' guibg='..bg_current)
-vim.cmd('hi BufferCurrentTarget guifg='..fg_current..' guibg='..bg_current)
+vim.cmd('hi BufferCurrentTarget guifg='..fg_target..' guibg='..bg_current)
 vim.cmd('hi BufferCurrentSign guifg='..fg_current..' guibg='..bg_current)
 
 vim.cmd('hi BufferVisible guifg='..fg_visible..' guibg='..bg_visible)
 vim.cmd('hi BufferVisibleIndex guifg='..fg_visible..' guibg='..bg_visible)
 vim.cmd('hi BufferVisibleMod guifg='..fg_visible..' guibg='..bg_visible)
-vim.cmd('hi BufferVisibleTarget guifg='..fg_visible..' guibg='..bg_visible)
+vim.cmd('hi BufferVisibleTarget guifg='..fg_target..' guibg='..bg_visible)
 vim.cmd('hi BufferVisibleSign guifg='..fg_visible..' guibg='..bg_visible)
 
 vim.cmd('hi BufferInactive guifg='..fg_inactive..' guibg='..bg_inactive)
 vim.cmd('hi BufferInactiveIndex guifg='..fg_inactive..' guibg='..bg_inactive)
 vim.cmd('hi BufferInactiveMod guifg='..fg_inactive..' guibg='..bg_inactive)
-vim.cmd('hi BufferInactiveTarget guifg='..fg_inactive..' guibg='..bg_inactive)
+vim.cmd('hi BufferInactiveTarget guifg='..fg_target..' guibg='..bg_inactive)
 vim.cmd('hi BufferInactiveSign guifg='..fg_inactive..' guibg='..bg_inactive)
 
 vim.cmd('hi BufferTabpageFill guibg='..bg_inactive)
