@@ -589,6 +589,16 @@ require'nvim-web-devicons'.setup {
  default = true;
 }
 
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = { "php", "yaml", "javascript" },
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+  }
+}
+
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
