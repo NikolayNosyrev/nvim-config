@@ -110,6 +110,7 @@ map('n', '<tab>', '<C-w><C-w>', default_opts)
 local opt = vim.opt
 
 vim.cmd 'set nowrap'
+vim.cmd 'set noswapfile'
 
 opt.cursorline = true               -- Подсветка строки с курсором
 opt.number = true                   -- Включаем нумерацию строк
