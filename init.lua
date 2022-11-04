@@ -207,11 +207,12 @@ map('t', '<C-v>', '<C-\\><C-n>pia<backspace>', default_opts)
 vim.cmd 'set clipboard+=unnamedplus'
 
 -----------------------------------------------------------
--- Easymotion
+-- Hop
 -----------------------------------------------------------
-vim.cmd 'let g:wordmotion_prefix = \'<Leader>\''
-vim.cmd 'nmap <A-w> <Leader><Leader>w'
-vim.cmd 'nmap <A-b> <Leader><Leader>b'
+
+require'hop'.setup()
+map('n', '<A-w>', '<Esc>:HopWordAC<cr>', default_opts)
+map('n', '<A-b>', '<Esc>:HopWordBC<cr>', default_opts)
 
 ------------------------ settings -----------------------------------
 
@@ -672,13 +673,20 @@ return require('packer').startup(function(use)
 
   use 'kenn7/vim-arsync'
 
-  use 'easymotion/vim-easymotion'
-
   use 'kyazdani42/nvim-web-devicons'
 
   use 'nelsyeung/twig.vim'
 
   use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
+
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  }
 
   if packer_bootstrap then
     require('packer').sync()
