@@ -226,6 +226,7 @@ require'lspconfig'.intelephense.setup{}
 
 require("nvim-lsp-installer").setup {}
 
+vim.notify = require("notify")
 
 ----------------------- LSP
 
@@ -687,6 +688,8 @@ return require('packer').startup(function(use)
       require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   }
+
+  use({ "rcarriga/nvim-notify" })
 
   if packer_bootstrap then
     require('packer').sync()
