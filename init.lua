@@ -328,6 +328,7 @@ vim.cmd('hi BufferTabpageFill guibg='..bg_inactive)
 ------------------------------------------------------------------------------ cmp-nvim-lsp -------------
 
   local cmp = require'cmp'
+  local luasnip = require'luasnip'
 
   cmp.setup({
     snippet = {
@@ -351,14 +352,35 @@ vim.cmd('hi BufferTabpageFill guibg='..bg_inactive)
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       ['<A-j>'] = cmp.mapping.select_next_item(),
       ['<A-k>'] = cmp.mapping.select_prev_item(),
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        elseif has_words_before() then
+          cmp.complete()
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
     }),
     completion = {
       completeopt = 'menu,menuone,noinsert'
     },
     sources = cmp.config.sources({
+      { name = 'luasnip' }, -- For luasnip users.
       { name = 'nvim_lsp' },
       -- { name = 'vsnip' }, -- For vsnip users.
-      { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
     }, {
@@ -418,6 +440,80 @@ require('lualine').setup {
 
 ------------------------------------------------------------------------------ lualine -------------
 
+local ls = require("luasnip")
+-- some shorthands...
+local snip = ls.snippet
+local node = ls.snippet_node
+local text = ls.text_node
+local insert = ls.insert_node
+local func = ls.function_node
+local choice = ls.choice_node
+local dynamicn = ls.dynamic_node
+
+local date = function() return {os.date('%Y-%m-%d')} end
+
+ls.add_snippets(nil, {
+    all = {
+        snip({
+            trig = "date",
+            namr = "Date",
+            dscr = "Date in the form of YYYY-MM-DD",
+        }, {
+            func(date, {}),
+        }),
+        snip({
+            trig = "var_dump",
+            namr = "var_dump2",
+            dscr = "var_dump3",
+        }, {
+            text({"var_dump("}),
+            insert(1),
+            text({"); exit;"}),
+        }),
+        snip({
+            trig = "dump",
+            namr = "Dump",
+            dscr = "var_dump3",
+        }, {
+            text({"dump("}),
+            insert(1),
+            text({"); exit;"}),
+        }),
+        snip({
+            trig = "echo",
+            namr = "var_dump2",
+            dscr = "var_dump3",
+        }, {
+            text({"echo 'sdfsdf'; exit;"})
+        }),
+        snip({
+            trig = "foreach",
+            namr = "foreach",
+            dscr = "foreach",
+        }, {
+            text({"foreach ("}),
+            insert(1),
+            text({" => "}),
+            insert(2),
+            text({") {", ""}),
+            text({"    "}),
+            insert(3),
+            text({"", "}"}),
+        }),
+        snip({
+            trig = "if",
+            namr = "if",
+            dscr = "if",
+        }, {
+            text({"if ("}),
+            insert(1),
+            text({") {", ""}),
+            text({"    "}),
+            insert(2),
+            text({"", "}"}),
+        }),
+    },
+})
 
 ------------------------------------------------------------------------------ telescope -------------
 
