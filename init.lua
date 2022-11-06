@@ -493,7 +493,7 @@ ls.add_snippets(nil, {
         }, {
             text({"foreach ("}),
             insert(1),
-            text({" => "}),
+            text({" as "}),
             insert(2),
             text({") {", ""}),
             text({"    "}),
